@@ -140,7 +140,7 @@ type Msg
 -- CONSTANTS
 homeUrl : Url.Url
 homeUrl =
-    { defaultHttpsUrl | host = "patjen.de/dj-discover" }
+    { defaultHttpsUrl | host = "patjen.github.io/dj-discover" }
     --{ defaultHttpsUrl | protocol = Http, host = "localhost:8000/index.html" }
 
 
