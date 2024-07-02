@@ -140,7 +140,7 @@ type Msg
 -- CONSTANTS
 homeUrl : Url.Url
 homeUrl =
-    { defaultHttpsUrl | host = "patjen.github.io/dj-discover" }
+    { defaultHttpsUrl | host = "patjen.de/dj-discover" }
     --{ defaultHttpsUrl | protocol = Http, host = "localhost:8000/index.html" }
 
 
@@ -551,7 +551,7 @@ viewNavbar model
             ]
         , div [ class "navbar-menu" ]
             [ div [ class "navbar-start" ]
-            [ a [ class "navbar-item", href "dj-discover.github.io" ]
+            [ a [ class "navbar-item", href "" ]
                 [ text "Playlists" ]
             , a [ class "navbar-item" ]
                 [ text "Reset" ]
