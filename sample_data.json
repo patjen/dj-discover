@@ -1,0 +1,1465 @@
+[
+  {
+    "songs": [
+      {
+        "name": "Messy",
+        "id": "35ISBknsCeZQtq66xABI9g",
+        "artists": [
+          "Lola Young"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736aa2a180c7b009ca8454ef89",
+        "danceability": 0.798,
+        "energy": 0.562,
+        "key": 9,
+        "tempo": 110.991
+      },
+      {
+        "name": "Midwest Indigo",
+        "id": "7GVQS66ukm48XZVymA3ZUg",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739cf15c7323fb85b7112197d5",
+        "danceability": 0.611,
+        "energy": 0.802,
+        "key": 8,
+        "tempo": 116.062
+      },
+      {
+        "name": "Guess",
+        "id": "0xzBmAsCfu3AzX1W0GYtMJ",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27351d8df7a57a0af8a4b6ee585",
+        "danceability": 0.774,
+        "energy": 0.694,
+        "key": 0,
+        "tempo": 130.017
+      },
+      {
+        "name": "Desire",
+        "id": "4gZUsulDxBJUHRcyFKYKYf",
+        "artists": [
+          "Tove Lo",
+          "SG Lewis"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737de2b9727e4016ab9ddbe4d5",
+        "danceability": 0.64,
+        "energy": 0.95,
+        "key": 6,
+        "tempo": 133.977
+      },
+      {
+        "name": "Show Me What",
+        "id": "0qJtV82bKOgB2kvfa8IrZp",
+        "artists": [
+          "A. G. Cook",
+          "Cecile Believe"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735f4269ee2c76394d8f3d1309",
+        "danceability": 0.755,
+        "energy": 0.433,
+        "key": 4,
+        "tempo": 160.052
+      },
+      {
+        "name": "mr useless",
+        "id": "1Ar2McJ98hNvgsHlxLTPQc",
+        "artists": [
+          "Shygirl",
+          "SG Lewis",
+          "Club Shy"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d81f52da138cd6aa2ba54f44",
+        "danceability": 0.697,
+        "energy": 0.943,
+        "key": 7,
+        "tempo": 131.997
+      },
+      {
+        "name": "Pink Venom",
+        "id": "0skYUMpS0AcbpjcGsAbRGj",
+        "artists": [
+          "BLACKPINK"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273797b37e01334a0897825d8b1",
+        "danceability": 0.798,
+        "energy": 0.697,
+        "key": 0,
+        "tempo": 90.031
+      },
+      {
+        "name": "Oldies Station",
+        "id": "7dI0mSvbdJTynUnEkWIom1",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739cf15c7323fb85b7112197d5",
+        "danceability": 0.748,
+        "energy": 0.556,
+        "key": 9,
+        "tempo": 101.004
+      },
+      {
+        "name": "Don't Forget the T",
+        "id": "3oKSItPtuHEXwLgsbZIo7Z",
+        "artists": [
+          "Josh Tenor"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d1840acc7d1db6936c3bae13",
+        "danceability": 0.938,
+        "energy": 0.521,
+        "key": 6,
+        "tempo": 104.563
+      },
+      {
+        "name": "It's Okay To Cry",
+        "id": "7nKiLyUUSbNUwaoMBzBeQO",
+        "artists": [
+          "SOPHIE"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fa3158c935aa3c01865f7150",
+        "danceability": 0.579,
+        "energy": 0.232,
+        "key": 8,
+        "tempo": 127.151
+      },
+      {
+        "name": "So I",
+        "id": "0AkiAfilrTUXV49dleC5SB",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27388e3822cccfb8f2832c70c2e",
+        "danceability": 0.725,
+        "energy": 0.478,
+        "key": 2,
+        "tempo": 116.055
+      },
+      {
+        "name": "Miss Me Too",
+        "id": "1sfg5AQ5NFecKm6GO7dkdo",
+        "artists": [
+          "Griff"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fe762793eaa520b4cfdb7ba8",
+        "danceability": 0.603,
+        "energy": 0.789,
+        "key": 10,
+        "tempo": 119.911
+      },
+      {
+        "name": "Fear Of Missing Out",
+        "id": "3SuYCsNMFa61CxlLU6ukNV",
+        "artists": [
+          "Ben Platt"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738406abf616b33e4e9f93cb75",
+        "danceability": 0.359,
+        "energy": 0.375,
+        "key": 0,
+        "tempo": 89.908
+      },
+      {
+        "name": "Sexy to Someone",
+        "id": "2Nq4SFbvYYZa8AF7lD7CWU",
+        "artists": [
+          "Clairo"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27374362c2135b974941620e189",
+        "danceability": 0.716,
+        "energy": 0.545,
+        "key": 0,
+        "tempo": 98.232
+      },
+      {
+        "name": "wie du manchmal fehlst",
+        "id": "2gOVXniOMdunVdYk2NUQ4p",
+        "artists": [
+          "Zartmann",
+          "Ski Aggu",
+          "Dauner"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731bf63ffc66f461e600919ed7",
+        "danceability": 0.869,
+        "energy": 0.527,
+        "key": 7,
+        "tempo": 115.063
+      },
+      {
+        "name": "Cherry Blossom",
+        "id": "3oDRri7iJCeKKNstpzbZqx",
+        "artists": [
+          "Empire Of The Sun"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aab1e26fa200a1bb6c369b94",
+        "danceability": 0.64,
+        "energy": 0.843,
+        "key": 5,
+        "tempo": 131.994
+      },
+      {
+        "name": "Calling After Me",
+        "id": "2WGcpz55A2vrvh6foEGCNL",
+        "artists": [
+          "Wallows"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273eec0058e722426eb9e5739d0",
+        "danceability": 0.636,
+        "energy": 0.797,
+        "key": 8,
+        "tempo": 139.963
+      },
+      {
+        "name": "Dimelo",
+        "id": "0EExLvFDjUzoonMODtXkOm",
+        "artists": [
+          "LIE NING"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9b7b96e2667512def103e80",
+        "danceability": 0.776,
+        "energy": 0.689,
+        "key": 10,
+        "tempo": 102.012
+      },
+      {
+        "name": "Slug",
+        "id": "0BnQ1jQWb6Th7e0jMQhB3F",
+        "artists": [
+          "Matt Champion"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273482d2e81e99cd644fb62c171",
+        "danceability": 0.791,
+        "energy": 0.581,
+        "key": 9,
+        "tempo": 120.046
+      },
+      {
+        "name": "full stop",
+        "id": "0bWcT3zU9v9RBAC5gUN7DP",
+        "artists": [
+          "Jeremy Zucker"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27379607801145a93a55ae17e70",
+        "danceability": 0.387,
+        "energy": 0.295,
+        "key": 4,
+        "tempo": 133.647
+      },
+      {
+        "name": "Sympathy is a knife",
+        "id": "5c9tBmJKbTdn1vhzXHeAwW",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27388e3822cccfb8f2832c70c2e",
+        "danceability": 0.718,
+        "energy": 0.706,
+        "key": 7,
+        "tempo": 131.943
+      }
+    ],
+    "name": "jul 24",
+    "id": "0Rg98WUq3TyueIYmZjAWKt",
+    "length": 21,
+    "snapshot": "AAAAObcWQjX48zCKEeGctYZVH4cymYq7",
+    "imageUrl": "https://mosaic.scdn.co/640/ab67616d00001e0251d8df7a57a0af8a4b6ee585ab67616d00001e026aa2a180c7b009ca8454ef89ab67616d00001e027de2b9727e4016ab9ddbe4d5ab67616d00001e029cf15c7323fb85b7112197d5"
+  },
+  {
+    "songs": [
+      {
+        "name": "The Dress",
+        "id": "0YMe6PHRbeDcN7KJdCG0bW",
+        "artists": [
+          "Dijon"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a68442f97c3ad2dcba0beae6",
+        "danceability": 0.747,
+        "energy": 0.531,
+        "key": 8,
+        "tempo": 88.009
+      },
+      {
+        "name": "Powerslide",
+        "id": "5x1Ctt9JCZNU5UhJWbHoQp",
+        "artists": [
+          "Ryan Beatty"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f5836791fd265b08343034cd",
+        "danceability": 0.839,
+        "energy": 0.511,
+        "key": 8,
+        "tempo": 102.424
+      },
+      {
+        "name": "TODAY",
+        "id": "6osru1Fx1n50mRD8QWI9m1",
+        "artists": [
+          "Q"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273bc0fcc558d90210fa9bc9e1e",
+        "danceability": 0.494,
+        "energy": 0.406,
+        "key": 0,
+        "tempo": 159.957
+      },
+      {
+        "name": "Pink + White",
+        "id": "3xKsf9qdS1CyvXSMEid6g8",
+        "artists": [
+          "Frank Ocean"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c5649add07ed3720be9d5526",
+        "danceability": 0.545,
+        "energy": 0.545,
+        "key": 9,
+        "tempo": 159.94
+      },
+      {
+        "name": "Your Love (Deja Vu) - Stripped Back",
+        "id": "30r7OpCxuvfZKNWlf6lhr2",
+        "artists": [
+          "Glass Animals"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27360d9f3955a8cc8eb67265a38",
+        "danceability": 0.837,
+        "energy": 0.373,
+        "key": 7,
+        "tempo": 107.993
+      },
+      {
+        "name": "Palms (with Channel Tres)",
+        "id": "6Jfi6aoMwFhpqm7TkeTeiP",
+        "artists": [
+          "Gus Dapperton",
+          "Channel Tres"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731ecd3d6fba82ec304f3d7780",
+        "danceability": 0.746,
+        "energy": 0.568,
+        "key": 4,
+        "tempo": 117.972
+      },
+      {
+        "name": "Mood Ring",
+        "id": "1I042sygvOn2C5SybTCuJ1",
+        "artists": [
+          "Lorde"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f0725869929cfa9d60a0567e",
+        "danceability": 0.709,
+        "energy": 0.459,
+        "key": 5,
+        "tempo": 95.014
+      },
+      {
+        "name": "All I Ever Asked",
+        "id": "2F9DCIJ7ZXHhNkiIlIIOkw",
+        "artists": [
+          "Rachel Chinouriri"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730a3ce60b0fde45c7212adc56",
+        "danceability": 0.913,
+        "energy": 0.459,
+        "key": 5,
+        "tempo": 114.996
+      },
+      {
+        "name": "Blue",
+        "id": "6PeV3ho9kjOYRRT5xJHMYU",
+        "artists": [
+          "SAIAH"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27365b0dc0a8f2347212ae1938a",
+        "danceability": 0.361,
+        "energy": 0.867,
+        "key": 1,
+        "tempo": 179.989
+      },
+      {
+        "name": "Einfach Sein - Demo",
+        "id": "5mMOE6nPc2MEeT692dgTam",
+        "artists": [
+          "Leuchtstoff"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27398424443a0dc67bf011bb569",
+        "danceability": 0.479,
+        "energy": 0.818,
+        "key": 6,
+        "tempo": 177.06
+      },
+      {
+        "name": "smoothie",
+        "id": "5ZpmBM5qKyF6jmS3lBEDXa",
+        "artists": [
+          "corook"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27318d26359c826dbe8b97837cc",
+        "danceability": 0.443,
+        "energy": 0.576,
+        "key": 6,
+        "tempo": 176.118
+      },
+      {
+        "name": "Goodie Bag",
+        "id": "4vHNeBWDQpVCmGbaccrRzi",
+        "artists": [
+          "Still Woozy"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735ddbd61ea4a6dab213cc97af",
+        "danceability": 0.739,
+        "energy": 0.522,
+        "key": 7,
+        "tempo": 138.263
+      },
+      {
+        "name": "computiful",
+        "id": "0lQRATnAHfiULVw36bIpDJ",
+        "artists": [
+          "CRO"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734664159466ae72ce0688f963",
+        "danceability": 0.389,
+        "energy": 0.401,
+        "key": 9,
+        "tempo": 89.96
+      },
+      {
+        "name": "Only in the West",
+        "id": "4A3yBa4C3Zy6UAGxIyv1XD",
+        "artists": [
+          "Yeek"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a408c462bfae2cca988a6921",
+        "danceability": 0.954,
+        "energy": 0.535,
+        "key": 7,
+        "tempo": 116.954
+      },
+      {
+        "name": "Music For a Sushi Restaurant",
+        "id": "5LYMamLv12UPbemOaTPyeV",
+        "artists": [
+          "Harry Styles"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732e8ed79e177ff6011076f5f0",
+        "danceability": 0.72,
+        "energy": 0.715,
+        "key": 11,
+        "tempo": 107.041
+      },
+      {
+        "name": "Für immer hier",
+        "id": "6lFE3aWWixcBaZsnAS84I1",
+        "artists": [
+          "BRUCKNER"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27398c99007dddf0d879d21faa2",
+        "danceability": 0.746,
+        "energy": 0.845,
+        "key": 5,
+        "tempo": 106.999
+      },
+      {
+        "name": "Good Morning Gorgeous",
+        "id": "77z6mJeFcHlRWVfbOdBCtc",
+        "artists": [
+          "Mary J. Blige"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a50d432d62c61a10b0d6add9",
+        "danceability": 0.519,
+        "energy": 0.582,
+        "key": 1,
+        "tempo": 131.524
+      },
+      {
+        "name": "Crosswalk",
+        "id": "7o8CauLugNjyHaRI1ko6Fw",
+        "artists": [
+          "Totally Enormous Extinct Dinosaurs"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d6850a3bdb0d812faa6e174d",
+        "danceability": 0.697,
+        "energy": 0.626,
+        "key": 2,
+        "tempo": 102.975
+      },
+      {
+        "name": "Kopf frei",
+        "id": "0grkjXlFMd9ER1A1x5YApD",
+        "artists": [
+          "nand"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273323837686fee046a72c3d70c",
+        "danceability": 0.595,
+        "energy": 0.517,
+        "key": 10,
+        "tempo": 112.482
+      },
+      {
+        "name": "The Sun Is Up Forever",
+        "id": "1Lb1S77Ooubhoy3sz509aY",
+        "artists": [
+          "Joesef"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e3b79ac7ec70a5ffb8c8d01f",
+        "danceability": 0.698,
+        "energy": 0.668,
+        "key": 9,
+        "tempo": 99.989
+      },
+      {
+        "name": "Haircut",
+        "id": "3UY4s7F4Ard3T6vm7xcJxQ",
+        "artists": [
+          "Ryan Beatty"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f5836791fd265b08343034cd",
+        "danceability": 0.779,
+        "energy": 0.495,
+        "key": 8,
+        "tempo": 128.992
+      },
+      {
+        "name": "Silk Chiffon",
+        "id": "0BLY78hYpsH9NqP6X0N8CX",
+        "artists": [
+          "MUNA",
+          "Phoebe Bridgers"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aa4c699481457039c023c1ed",
+        "danceability": 0.622,
+        "energy": 0.736,
+        "key": 8,
+        "tempo": 97.006
+      },
+      {
+        "name": "Right Down the Line",
+        "id": "2Xb6wJYGi0QXwURw5WWvI5",
+        "artists": [
+          "Gerry Rafferty"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dc60cf9a010f86354e6735dd",
+        "danceability": 0.783,
+        "energy": 0.322,
+        "key": 0,
+        "tempo": 128.226
+      },
+      {
+        "name": "ALIENS - CHILL MIX",
+        "id": "3115Rz9fnoXW2EBHU3FGZK",
+        "artists": [
+          "The Griswolds",
+          "Transviolet"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737f50af4784d74a8ff0e28211",
+        "danceability": 0.426,
+        "energy": 0.295,
+        "key": 5,
+        "tempo": 111.709
+      },
+      {
+        "name": "come back",
+        "id": "1QwRhyt1sjYJXAWzFCBjuE",
+        "artists": [
+          "Ben Platt"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739fab582968ffa7c745deae7e",
+        "danceability": 0.407,
+        "energy": 0.579,
+        "key": 7,
+        "tempo": 173.638
+      },
+      {
+        "name": "FYI",
+        "id": "0NFMRxhxAPudloawaWi3oq",
+        "artists": [
+          "serpentwithfeet"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dd9ee3b2cf63b0275d2a420f",
+        "danceability": 0.552,
+        "energy": 0.45,
+        "key": 2,
+        "tempo": 79.973
+      },
+      {
+        "name": "fuck, i luv my friends",
+        "id": "4hk4plGoAmg3naYTq8EUul",
+        "artists": [
+          "renforshort"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c82e4d0cc3b8c3ea9eb2881d",
+        "danceability": 0.443,
+        "energy": 0.551,
+        "key": 4,
+        "tempo": 168.099
+      },
+      {
+        "name": "Albert Camus",
+        "id": "4ngMatPdF3yQ51G4UKwx9M",
+        "artists": [
+          "Tom Rosenthal"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27367b503938d61b9a16262a26e",
+        "danceability": 0.648,
+        "energy": 0.556,
+        "key": 9,
+        "tempo": 80.225
+      },
+      {
+        "name": "Tropicana",
+        "id": "3L7HAJzsF6GJNIS0nCniJo",
+        "artists": [
+          "Vanilla Gorilla"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b8d14c2b079750127783b266",
+        "danceability": 0.687,
+        "energy": 0.726,
+        "key": 8,
+        "tempo": 123.375
+      },
+      {
+        "name": "Woman",
+        "id": "33bURv895AN4FkBvgFo2dx",
+        "artists": [
+          "Harry Styles"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736c619c39c853f8b1d67b7859",
+        "danceability": 0.624,
+        "energy": 0.647,
+        "key": 3,
+        "tempo": 136.022
+      },
+      {
+        "name": "Just the Two of Us (feat. Bill Withers)",
+        "id": "1ko2lVN0vKGUl9zrU0qSlT",
+        "artists": [
+          "Grover Washington, Jr.",
+          "Bill Withers"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273472fbc1d5743c7d3c75b9ec0",
+        "danceability": 0.749,
+        "energy": 0.497,
+        "key": 10,
+        "tempo": 95.818
+      },
+      {
+        "name": "Reelin'",
+        "id": "0pZrbb5wNwxRA3mqsl1SWN",
+        "artists": [
+          "Matt Corby"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273237b09ef253bca0d587a5044",
+        "danceability": 0.667,
+        "energy": 0.368,
+        "key": 9,
+        "tempo": 85.935
+      },
+      {
+        "name": "CGI",
+        "id": "0yinijG2Ju2VOeLLB8BgVe",
+        "artists": [
+          "corook"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735863aac43eccf7fae877a705",
+        "danceability": 0.829,
+        "energy": 0.564,
+        "key": 7,
+        "tempo": 125.017
+      },
+      {
+        "name": "Heaven",
+        "id": "6WXnyeJ7UYGCmUE4TYzbro",
+        "artists": [
+          "The Blaze"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b4556accd30d60007b730f59",
+        "danceability": 0.633,
+        "energy": 0.443,
+        "key": 1,
+        "tempo": 125.033
+      },
+      {
+        "name": "Views",
+        "id": "1RKTekqcXtQm1zvyRU10Aw",
+        "artists": [
+          "Maze"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ad7b3c24dd3caa938a8b8a48",
+        "danceability": 0.547,
+        "energy": 0.454,
+        "key": 11,
+        "tempo": 81.746
+      },
+      {
+        "name": "Fortnight (feat. Post Malone)",
+        "id": "2OzhQlSqBEmt7hmkYxfT6m",
+        "artists": [
+          "Taylor Swift",
+          "Post Malone"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33",
+        "danceability": 0.504,
+        "energy": 0.386,
+        "key": 11,
+        "tempo": 192.004
+      },
+      {
+        "name": "End of Beginning",
+        "id": "3qhlB30KknSejmIvZZLjOD",
+        "artists": [
+          "Djo"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fddfffec51b4580acae727c1",
+        "danceability": 0.689,
+        "energy": 0.454,
+        "key": 2,
+        "tempo": 159.982
+      },
+      {
+        "name": "Slug",
+        "id": "0BnQ1jQWb6Th7e0jMQhB3F",
+        "artists": [
+          "Matt Champion"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273482d2e81e99cd644fb62c171",
+        "danceability": 0.791,
+        "energy": 0.581,
+        "key": 9,
+        "tempo": 120.046
+      }
+    ],
+    "name": "alivest",
+    "id": "3wFc2p5hC1IdpbIo9bTNFE",
+    "length": 38,
+    "snapshot": "AAAAW0Sto2orP/sqVPtua2P2I2CUQGhv",
+    "imageUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84f04768866259a2bbdd04d2ab"
+  },
+  {
+    "songs": [
+      {
+        "name": "Messy",
+        "id": "35ISBknsCeZQtq66xABI9g",
+        "artists": [
+          "Lola Young"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736aa2a180c7b009ca8454ef89",
+        "danceability": 0.798,
+        "energy": 0.562,
+        "key": 9,
+        "tempo": 110.991
+      },
+      {
+        "name": "Midwest Indigo",
+        "id": "7GVQS66ukm48XZVymA3ZUg",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739cf15c7323fb85b7112197d5",
+        "danceability": 0.611,
+        "energy": 0.802,
+        "key": 8,
+        "tempo": 116.062
+      },
+      {
+        "name": "Dimelo",
+        "id": "0EExLvFDjUzoonMODtXkOm",
+        "artists": [
+          "LIE NING"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9b7b96e2667512def103e80",
+        "danceability": 0.776,
+        "energy": 0.689,
+        "key": 10,
+        "tempo": 102.012
+      },
+      {
+        "name": "Guess",
+        "id": "0xzBmAsCfu3AzX1W0GYtMJ",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27351d8df7a57a0af8a4b6ee585",
+        "danceability": 0.774,
+        "energy": 0.694,
+        "key": 0,
+        "tempo": 130.017
+      },
+      {
+        "name": "Desire",
+        "id": "4gZUsulDxBJUHRcyFKYKYf",
+        "artists": [
+          "Tove Lo",
+          "SG Lewis"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737de2b9727e4016ab9ddbe4d5",
+        "danceability": 0.64,
+        "energy": 0.95,
+        "key": 6,
+        "tempo": 133.977
+      },
+      {
+        "name": "mr useless",
+        "id": "1Ar2McJ98hNvgsHlxLTPQc",
+        "artists": [
+          "Shygirl",
+          "SG Lewis",
+          "Club Shy"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d81f52da138cd6aa2ba54f44",
+        "danceability": 0.697,
+        "energy": 0.943,
+        "key": 7,
+        "tempo": 131.997
+      },
+      {
+        "name": "full stop",
+        "id": "0bWcT3zU9v9RBAC5gUN7DP",
+        "artists": [
+          "Jeremy Zucker"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27379607801145a93a55ae17e70",
+        "danceability": 0.387,
+        "energy": 0.295,
+        "key": 4,
+        "tempo": 133.647
+      },
+      {
+        "name": "Oldies Station",
+        "id": "7dI0mSvbdJTynUnEkWIom1",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739cf15c7323fb85b7112197d5",
+        "danceability": 0.748,
+        "energy": 0.556,
+        "key": 9,
+        "tempo": 101.004
+      },
+      {
+        "name": "Don't Forget the T",
+        "id": "3oKSItPtuHEXwLgsbZIo7Z",
+        "artists": [
+          "Josh Tenor"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d1840acc7d1db6936c3bae13",
+        "danceability": 0.938,
+        "energy": 0.521,
+        "key": 6,
+        "tempo": 104.563
+      },
+      {
+        "name": "Show Me What",
+        "id": "0qJtV82bKOgB2kvfa8IrZp",
+        "artists": [
+          "A. G. Cook",
+          "Cecile Believe"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735f4269ee2c76394d8f3d1309",
+        "danceability": 0.755,
+        "energy": 0.433,
+        "key": 4,
+        "tempo": 160.052
+      },
+      {
+        "name": "It's Okay To Cry",
+        "id": "7nKiLyUUSbNUwaoMBzBeQO",
+        "artists": [
+          "SOPHIE"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fa3158c935aa3c01865f7150",
+        "danceability": 0.579,
+        "energy": 0.232,
+        "key": 8,
+        "tempo": 127.151
+      },
+      {
+        "name": "So I",
+        "id": "0AkiAfilrTUXV49dleC5SB",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27388e3822cccfb8f2832c70c2e",
+        "danceability": 0.725,
+        "energy": 0.478,
+        "key": 2,
+        "tempo": 116.055
+      },
+      {
+        "name": "wie du manchmal fehlst",
+        "id": "2gOVXniOMdunVdYk2NUQ4p",
+        "artists": [
+          "Zartmann",
+          "Ski Aggu",
+          "Dauner"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731bf63ffc66f461e600919ed7",
+        "danceability": 0.869,
+        "energy": 0.527,
+        "key": 7,
+        "tempo": 115.063
+      },
+      {
+        "name": "Miss Me Too",
+        "id": "1sfg5AQ5NFecKm6GO7dkdo",
+        "artists": [
+          "Griff"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fe762793eaa520b4cfdb7ba8",
+        "danceability": 0.603,
+        "energy": 0.789,
+        "key": 10,
+        "tempo": 119.911
+      },
+      {
+        "name": "Fear Of Missing Out",
+        "id": "3SuYCsNMFa61CxlLU6ukNV",
+        "artists": [
+          "Ben Platt"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738406abf616b33e4e9f93cb75",
+        "danceability": 0.359,
+        "energy": 0.375,
+        "key": 0,
+        "tempo": 89.908
+      },
+      {
+        "name": "Sexy to Someone",
+        "id": "2Nq4SFbvYYZa8AF7lD7CWU",
+        "artists": [
+          "Clairo"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27374362c2135b974941620e189",
+        "danceability": 0.716,
+        "energy": 0.545,
+        "key": 0,
+        "tempo": 98.232
+      },
+      {
+        "name": "Calling After Me",
+        "id": "2WGcpz55A2vrvh6foEGCNL",
+        "artists": [
+          "Wallows"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273eec0058e722426eb9e5739d0",
+        "danceability": 0.636,
+        "energy": 0.797,
+        "key": 8,
+        "tempo": 139.963
+      },
+      {
+        "name": "Cherry Blossom",
+        "id": "3oDRri7iJCeKKNstpzbZqx",
+        "artists": [
+          "Empire Of The Sun"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aab1e26fa200a1bb6c369b94",
+        "danceability": 0.64,
+        "energy": 0.843,
+        "key": 5,
+        "tempo": 131.994
+      },
+      {
+        "name": "Toro",
+        "id": "62QValXcWLH5RSnZRFeKKl",
+        "artists": [
+          "Remi Wolf"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27332b58b0e8447b35f970e283c",
+        "danceability": 0.676,
+        "energy": 0.681,
+        "key": 1,
+        "tempo": 108.888
+      },
+      {
+        "name": "Slug",
+        "id": "0BnQ1jQWb6Th7e0jMQhB3F",
+        "artists": [
+          "Matt Champion"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273482d2e81e99cd644fb62c171",
+        "danceability": 0.791,
+        "energy": 0.581,
+        "key": 9,
+        "tempo": 120.046
+      },
+      {
+        "name": "Sympathy is a knife",
+        "id": "5c9tBmJKbTdn1vhzXHeAwW",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27388e3822cccfb8f2832c70c2e",
+        "danceability": 0.718,
+        "energy": 0.706,
+        "key": 7,
+        "tempo": 131.943
+      },
+      {
+        "name": "Next Semester",
+        "id": "4PCD9jZRM2VswisaTBhc25",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f565f544b34e87ffb719e6f6",
+        "danceability": 0.234,
+        "energy": 0.823,
+        "key": 4,
+        "tempo": 174.916
+      },
+      {
+        "name": "summer on the inside",
+        "id": "0IRDLaO3ng5eyl4Po8hZXj",
+        "artists": [
+          "warner case",
+          "Jean Tonique",
+          "Max Kaluza"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736557c596368c4579b4e35eac",
+        "danceability": 0.833,
+        "energy": 0.822,
+        "key": 7,
+        "tempo": 120.788
+      },
+      {
+        "name": "Andrew",
+        "id": "0tjVLOoRskePkqXGyP43Y5",
+        "artists": [
+          "Ben Platt"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731f2bb30b7b092e79ccb3081b",
+        "danceability": 0.482,
+        "energy": 0.371,
+        "key": 11,
+        "tempo": 150.167
+      },
+      {
+        "name": "Club classics",
+        "id": "7BoOmRrtNCbIT9yQ4xidk5",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273dd56be9db600cc220330c7bd",
+        "danceability": 0.704,
+        "energy": 0.868,
+        "key": 7,
+        "tempo": 144.969
+      },
+      {
+        "name": "c0ldLA/h0pelessPlace",
+        "id": "6m04rkFdYrE2YZTHdLFizP",
+        "artists": [
+          "TYM"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a8bd395f286c7bf700d1232e",
+        "danceability": 0.346,
+        "energy": 0.486,
+        "key": 9,
+        "tempo": 169.838
+      },
+      {
+        "name": "DOLLY P",
+        "id": "1fp4DIjhHyptQWK00CZgFQ",
+        "artists": [
+          "Beyoncé",
+          "Dolly Parton"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731572698fff8a1db257a53599",
+        "danceability": 0.873,
+        "energy": 0.363,
+        "key": 4,
+        "tempo": 106.167
+      },
+      {
+        "name": "JOLENE",
+        "id": "2PmMh2t7jAtN6cqFooA0Xy",
+        "artists": [
+          "Beyoncé"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731572698fff8a1db257a53599",
+        "danceability": 0.567,
+        "energy": 0.812,
+        "key": 11,
+        "tempo": 106.179
+      },
+      {
+        "name": "Do What U Want",
+        "id": "5XKXMWPACPq51OiqzxenZo",
+        "artists": [
+          "Lady Gaga",
+          "Christina Aguilera"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273baa4fdc6aab2fd6801fc1434",
+        "danceability": 0.778,
+        "energy": 0.801,
+        "key": 9,
+        "tempo": 97.47
+      },
+      {
+        "name": "Aftertaste",
+        "id": "6HrGHJbrBpuLAKhwfaGTlz",
+        "artists": [
+          "Chitra"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f9c672f0152d708d0f8afd9b",
+        "danceability": 0.44,
+        "energy": 0.362,
+        "key": 0,
+        "tempo": 139.924
+      },
+      {
+        "name": "Lost On Me",
+        "id": "5ijpPkVMurycFFfNKVlcoc",
+        "artists": [
+          "Eric Nam"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2737dde3b635e6cf355cf305312",
+        "danceability": 0.752,
+        "energy": 0.537,
+        "key": 1,
+        "tempo": 147.02
+      },
+      {
+        "name": "Pineapple Slice (with SG Lewis)",
+        "id": "66mhaHoJIiVWB3lwA6974s",
+        "artists": [
+          "Tove Lo",
+          "SG Lewis"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d5c0f77cf4c6ad252b9e082a",
+        "danceability": 0.819,
+        "energy": 0.541,
+        "key": 11,
+        "tempo": 120.978
+      },
+      {
+        "name": "Overcompensate",
+        "id": "0wEGo9LsSrSUz9HOtraWAO",
+        "artists": [
+          "Twenty One Pilots"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27399bb3f025c3c637945080979",
+        "danceability": 0.363,
+        "energy": 0.891,
+        "key": 5,
+        "tempo": 95.089
+      },
+      {
+        "name": "supernatural (with Troye Sivan)",
+        "id": "3iJOkxYP59kFJ5OLgHo4Tp",
+        "artists": [
+          "Ariana Grande",
+          "Troye Sivan"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273bd3de668e4784d791c4ab695",
+        "danceability": 0.576,
+        "energy": 0.732,
+        "key": 8,
+        "tempo": 152.996
+      },
+      {
+        "name": "Backseat Girl",
+        "id": "4GcjmPentdxkwiIR9y8xfI",
+        "artists": [
+          "Isaac Dunbar"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e6142a7ebdbe423684ab21ce",
+        "danceability": 0.477,
+        "energy": 0.835,
+        "key": 2,
+        "tempo": 130.843
+      },
+      {
+        "name": "End of Beginning",
+        "id": "3qhlB30KknSejmIvZZLjOD",
+        "artists": [
+          "Djo"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fddfffec51b4580acae727c1",
+        "danceability": 0.689,
+        "energy": 0.454,
+        "key": 2,
+        "tempo": 159.982
+      },
+      {
+        "name": "we can't be friends (wait for your love)",
+        "id": "51ZQ1vr10ffzbwIjDCwqm4",
+        "artists": [
+          "Ariana Grande"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4",
+        "danceability": 0.645,
+        "energy": 0.646,
+        "key": 5,
+        "tempo": 115.842
+      },
+      {
+        "name": "Ai Uitat De Mine",
+        "id": "6SeEwbXgOCoQoGA2fUnVfq",
+        "artists": [
+          "ghosty punk"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27337018d42d5d3c16d4cb21b8f",
+        "danceability": 0.563,
+        "energy": 0.561,
+        "key": 0,
+        "tempo": 84.859
+      },
+      {
+        "name": "ALIEN SUPERSTAR",
+        "id": "1Hohk6AufHZOrrhMXZppax",
+        "artists": [
+          "Beyoncé"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730e58a0f8308c1ad403d105e7",
+        "danceability": 0.545,
+        "energy": 0.641,
+        "key": 10,
+        "tempo": 121.892
+      },
+      {
+        "name": "Von dutch",
+        "id": "01TnMXIy7mJJQ7E8uy937N",
+        "artists": [
+          "Charli xcx"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2735a933871a40c5b9e1deea8d3",
+        "danceability": 0.706,
+        "energy": 0.698,
+        "key": 10,
+        "tempo": 130.013
+      },
+      {
+        "name": "Your Apartment",
+        "id": "2F8GiqfSE1JSjLGHlHMmQa",
+        "artists": [
+          "Wallows"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273ee7ba46c13b02c8fcdf3ab80",
+        "danceability": 0.553,
+        "energy": 0.856,
+        "key": 4,
+        "tempo": 142.05
+      },
+      {
+        "name": "bye",
+        "id": "1Rweq7vNjK4kZBbGrmxQsl",
+        "artists": [
+          "Ariana Grande"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4",
+        "danceability": 0.606,
+        "energy": 0.645,
+        "key": 2,
+        "tempo": 110.016
+      },
+      {
+        "name": "this is what space feels like",
+        "id": "6PetYmvjKZBjiUYlnlAcn1",
+        "artists": [
+          "JVKE"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273b4bf03e0316b9835600c55af",
+        "danceability": 0.515,
+        "energy": 0.379,
+        "key": 10,
+        "tempo": 73.092
+      },
+      {
+        "name": "leavemealone",
+        "id": "1MVqeIAwhD4T44AKVkIfic",
+        "artists": [
+          "Fred again..",
+          "Baby Keem"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c9049966d5a1c1954ae98480",
+        "danceability": 0.68,
+        "energy": 0.881,
+        "key": 0,
+        "tempo": 174.062
+      },
+      {
+        "name": "JE N'EXISTE PAS",
+        "id": "25xqUhCDGyJejMANoigvrI",
+        "artists": [
+          "Brutalismus 3000"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730fe005e66bd2e46300045656",
+        "danceability": 0.731,
+        "energy": 0.886,
+        "key": 2,
+        "tempo": 155.004
+      },
+      {
+        "name": "You’re Losing Me (From The Vault)",
+        "id": "3CWq0pAKKTWb0K4yiglDc4",
+        "artists": [
+          "Taylor Swift"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734fe1868aa6838eb595f3673a",
+        "danceability": 0.744,
+        "energy": 0.396,
+        "key": 0,
+        "tempo": 102.969
+      },
+      {
+        "name": "Aerie",
+        "id": "0eCyLXuQvl6P09iymEGTXS",
+        "artists": [
+          "Lena Raine",
+          "Minecraft"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2731e96072f9313fa912b7ffbd3",
+        "danceability": 0.33,
+        "energy": 0.0171,
+        "key": 0,
+        "tempo": 108.449
+      },
+      {
+        "name": "Never Been Better",
+        "id": "7fNWPUnA2J84thubOvYvPf",
+        "artists": [
+          "Ben Abraham",
+          "corook"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27333a623e42c2a50696a936fda",
+        "danceability": 0.773,
+        "energy": 0.532,
+        "key": 6,
+        "tempo": 138.979
+      },
+      {
+        "name": "Zoom Call",
+        "id": "1m4juqM2fqfLfKMYKUJB0h",
+        "artists": [
+          "Whitey en vogue",
+          "Ikkimel"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732b34acd1652e8ec15072b6ec",
+        "danceability": 0.76,
+        "energy": 0.99,
+        "key": 7,
+        "tempo": 156.498
+      },
+      {
+        "name": "yes, and?",
+        "id": "7gaA3wERFkFkgivjwbSvkG",
+        "artists": [
+          "Ariana Grande"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736b0b6e20fdb1ee07de7e92d6",
+        "danceability": 0.787,
+        "energy": 0.775,
+        "key": 1,
+        "tempo": 118.998
+      },
+      {
+        "name": "everytime",
+        "id": "0WdR2AyLW1Drd3OUdwezM0",
+        "artists": [
+          "Ariana Grande"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273c3af0c2355c24ed7023cd394",
+        "danceability": 0.71,
+        "energy": 0.614,
+        "key": 10,
+        "tempo": 148.152
+      },
+      {
+        "name": "ICARUS",
+        "id": "3rwnOJfCvSgwczD3BBAF50",
+        "artists": [
+          "GRANT KNOCHE"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27397af1e626c4272bec872a148",
+        "danceability": 0.596,
+        "energy": 0.708,
+        "key": 7,
+        "tempo": 69.98
+      },
+      {
+        "name": "closure",
+        "id": "5iKyrrKFZ9zHbW0mpW18GA",
+        "artists": [
+          "Henry Moodie"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2734db491978ca8cb62bf8527c1",
+        "danceability": 0.67,
+        "energy": 0.693,
+        "key": 7,
+        "tempo": 109.66
+      },
+      {
+        "name": "GAY MAN",
+        "id": "7skPu7cqaIyYirAkkvbN2J",
+        "artists": [
+          "Jeffrey Eli"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e8aff0c4a23423e184715ae7",
+        "danceability": 0.783,
+        "energy": 0.584,
+        "key": 0,
+        "tempo": 148.035
+      },
+      {
+        "name": "sag was",
+        "id": "1phFx4XBj9VOSV5c8s4PQr",
+        "artists": [
+          "Paula Hartmann",
+          "t-low"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b273fce0fbafbb3248ebc3b1353e",
+        "danceability": 0.711,
+        "energy": 0.473,
+        "key": 0,
+        "tempo": 148.01
+      },
+      {
+        "name": "Moment",
+        "id": "4rGKCr6pj3tKNWJvICbOaZ",
+        "artists": [
+          "Nicolas Binder"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2739f473b8e106b9467947ef10e",
+        "danceability": 0.637,
+        "energy": 0.726,
+        "key": 8,
+        "tempo": 140.011
+      },
+      {
+        "name": "Call Your Girlfriend",
+        "id": "5afS2j6iwojh9iZNnu1dRO",
+        "artists": [
+          "Robyn"
+        ],
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b27323814f08bfdfb7d6a8d558c5",
+        "danceability": 0.586,
+        "energy": 0.877,
+        "key": 8,
+        "tempo": 125.014
+      }
+    ],
+    "name": "the record",
+    "id": "3lohSwnPtUtteHLwwbe4Sd",
+    "length": 57,
+    "snapshot": "AAAF29208abMldT9I2VyyStNw6Mb2x7I",
+    "imageUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8468d73927cccf2804a08027b3"
+  },
+  {
+    "songs": [],
+    "name": "Voyager 2024",
+    "id": "6SyUUxI1nSOW0fPE0HTp6F",
+    "length": 457,
+    "snapshot": "AAAAZwY6U12Yuh+pY8TQiYbbkfpAKfbU",
+    "imageUrl": "https://mosaic.scdn.co/640/ab67616d00001e024718e2b124f79258be7bc452ab67616d00001e0287a7b0bb506cb4416d8f8256ab67616d00001e0288e3822cccfb8f2832c70c2eab67616d00001e02b952ed92628fab279c961526"
+  },
+  {
+    "songs": [],
+    "name": "setlist recs",
+    "id": "2aYAZwvhEj2va8X98cZS6s",
+    "length": 60,
+    "snapshot": "AAAASK7guspYtiAJDgzjFYuFTavBVaXk",
+    "imageUrl": "https://mosaic.scdn.co/640/ab67616d00001e022a1049b6d0d2b4c3c0abe7a8ab67616d00001e0276ffb5b5ab045d22c81235c1ab67616d00001e02dd56be9db600cc220330c7bdab67616d00001e02e85259a1cae29a8d91f2093d"
+  }
+]

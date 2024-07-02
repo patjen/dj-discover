@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DJ Discover</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+	<script src="https://kit.fontawesome.com/ad11936ac9.js" crossorigin="anonymous"></script>
+	<script src="main.js"></script>
+
+</head>
+
+<body>
+	<div id="myapp"></div>
+	<script>
+		const storedData = localStorage.getItem('state');
+		const playlists = storedData ? JSON.parse(storedData) : null;
+
+		const app = Elm.Main.init({
+			node: document.getElementById('myapp'),
+			flags: [
+				rememberedBytes(),
+				playlists
+			]
+		});
+
+		app.ports.setStorage.subscribe((state) => {
+			localStorage.setItem('state', JSON.stringify(state));
+		});
+
+		function rememberedBytes() {
+			const bytes = localStorage.getItem("bytes");
+			return bytes ? bytes.split(",").map(x => parseInt(x, 10)) : [];
+		}
+
+		app.ports.genRandomBytes.subscribe(() => {
+			const buffer = new Uint8Array(64);
+			const bytes = Array.from(crypto.getRandomValues(buffer));
+			localStorage.setItem("bytes", bytes);
+			app.ports.randomBytes.send(bytes);
+		});
+	</script>
+</body>
+
+</html>
