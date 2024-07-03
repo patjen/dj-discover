@@ -1,37 +1,29 @@
 port module Main exposing (..)
 
-
 import Browser
 import Browser.Navigation as Nav
 import Bytes.Encode as Bytes
---import Element exposing (..)
---import Element.Background as Background
---import Element.Border as Border
---import Element.Font as Font
---import Element.Input as Input
-import Html exposing (..)
-import Html.Attributes exposing (name, disabled, style, href, type_, src, usemap, shape, coords, title, id, checked, attribute, class)
-import Html.Events exposing (onClick, onInput)
-import Svg exposing (svg, rect, circle, polygon, line, image)
-import Svg.Attributes as SvgA
-import Svg.Events
-import Svg exposing (Svg)
-import Http
-import Json.Decode as Decode
-import Json.Encode as Encode
-import OAuth
-import OAuth.AuthorizationCode.PKCE as PKCE
-import Random
-import Random.List
-import Url exposing (Protocol(..), Url)
-import Url.Parser exposing ((<?>))
-import List exposing (sort)
-
 import Chart as C
 import Chart.Attributes as CA
 import Chart.Events as CE
 import Chart.Item as CI
 import Debug exposing (toString)
+import Html exposing (..)
+import Html.Attributes exposing (attribute, checked, class, coords, disabled, href, id, name, placeholder, shape, src, step, style, title, type_, usemap, value)
+import Html.Events exposing (onClick, onInput)
+import Http
+import Json.Decode as Decode
+import Json.Encode as Encode
+import List exposing (sort)
+import OAuth
+import OAuth.AuthorizationCode.PKCE as PKCE
+import Random
+import Random.List
+import Svg exposing (Svg, circle, image, line, polygon, rect, svg)
+import Svg.Attributes as SvgA
+import Svg.Events
+import Url exposing (Protocol(..), Url)
+import Url.Parser exposing ((<?>))
 
 
 main : Program ( List Int, Encode.Value ) Model Msg
@@ -64,12 +56,21 @@ type alias Model =
     , picture : String
     , playlists : List Playlist
     , errorState : Maybe Msg
-    , trackFeatures : List TrackFeatures
     , currentPlaylist : Playlist
     , chartHovering : List (CI.Many ChartDatum CI.Any)
+    , tempoMin : Float
+    , tempoMax : Float
+    , energyMin : Float
+    , energyMax : Float
+    , danceabilityMin : Float
+    , danceabilityMax : Float
     }
 
+
+
 -- MARK: Types
+
+
 type alias Playlist =
     { songs : List Song
     , name : String
@@ -91,6 +92,7 @@ type alias Song =
     , tempo : Float
     }
 
+
 type alias TrackFeatures =
     { id : String
     , danceability : Float
@@ -99,6 +101,7 @@ type alias TrackFeatures =
     , tempo : Float
     }
 
+
 type alias ChartDatum =
     { index : Float
     , name : String
@@ -106,6 +109,7 @@ type alias ChartDatum =
     , energy : Float
     , danceability : Float
     }
+
 
 type Msg
     = GotAccessToken (Result Http.Error PKCE.AuthenticationSuccess)
@@ -116,11 +120,9 @@ type Msg
     | GotRandomBytes (List Int)
     | GotUser (Result Http.Error ( String, String ))
     | GotPlaylists (Result Http.Error ( List Playlist, Maybe String ))
-    | ClickedShuffle Playlist
     | GotSongs Playlist (Result Http.Error ( List Song, Maybe String ))
-    | ShuffledSongs Playlist
-    | AddedToQueue Int (List Song)
     | GotTrackFeatures (Result Http.Error TrackFeatures)
+    | AddedToQueue Int (List Song)
     | ClickedPlaylist Playlist
     | ClickedResetCurrentPlaylist
     | ClickedReloadLibrary
@@ -129,19 +131,27 @@ type Msg
     | ClickedSortByTempo
     | ClickedSortByKey
     | ClickedReverseOrder
-    | ClickedFilterByDancability Float Float
-    | ClickedFilterByEnergy Float Float
-    | ClickedFilterByTempo Float Float
-    | ClickedFilterByKey Bool Bool Bool Bool Bool Bool Bool Bool Bool Bool Bool Bool
+    | TempoMin String
+    | TempoMax String
+    | EnergyMin String
+    | EnergyMax String
+    | DanceabilityMin String
+    | DanceabilityMax String
+    | ApplyFilter
     | OnChartHover (List (CI.Many ChartDatum CI.Any))
 
 
 
 -- CONSTANTS
+
+
 homeUrl : Url.Url
 homeUrl =
     { defaultHttpsUrl | host = "patjen.github.io/dj-discover" }
-    --{ defaultHttpsUrl | protocol = Http, host = "localhost:8000/index.html" }
+
+
+
+--{ defaultHttpsUrl | protocol = Http, host = "localhost:8000/index.html" }
 
 
 apiUrl : Url.Url
@@ -149,11 +159,18 @@ apiUrl =
     { defaultHttpsUrl | host = "api.spotify.com/v1" }
 
 
+homePath : String
+homePath =
+    "/dj-discover"
+
+
+
+--""
+
+
 clientId : String
 clientId =
     "c26f02d5c1d64078a070b5f2b266ca84"
-
-
 
 
 
@@ -175,9 +192,14 @@ init ( randomList, playlists ) url key =
             , picture = ""
             , playlists = p
             , errorState = Nothing
-            , trackFeatures = []
             , currentPlaylist = Playlist [] "none" "" 0 "" ""
             , chartHovering = []
+            , tempoMin = 0
+            , tempoMax = 300
+            , energyMin = 0
+            , energyMax = 100
+            , danceabilityMin = 0
+            , danceabilityMax = 100
             }
     in
     case PKCE.parseCode url of
@@ -191,10 +213,10 @@ init ( randomList, playlists ) url key =
 
         _ ->
             ( model, Cmd.none )
-    --( model, Cmd.none )
 
 
 
+--( model, Cmd.none )
 -- AUTHENTICATION
 
 
@@ -249,46 +271,51 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            let 
-                updatedModel = { model | url = url }
-                noPlaylist = Playlist [] "none" "" 0 "" ""
+            let
+                updatedModel =
+                    { model | url = url }
+
+                noPlaylist =
+                    Playlist [] "none" "" 0 "" ""
             in
-                case (url.path, url.fragment) of
-                    ("/login", _) ->
-                        case PKCE.parseCode url of
-                            PKCE.Success { code } ->
-                                case getCodeVerifier model.randomList of
-                                    Just c ->
-                                        ( updatedModel, getAuthToken code c )
+            case ( url.path, url.fragment ) of
+                ( "/login", _ ) ->
+                    case PKCE.parseCode url of
+                        PKCE.Success { code } ->
+                            case getCodeVerifier model.randomList of
+                                Just c ->
+                                    ( updatedModel, getAuthToken code c )
 
-                                    Nothing ->
-                                        ( updatedModel, Cmd.none )
+                                Nothing ->
+                                    ( updatedModel, Cmd.none )
 
-                            _ ->
-                                ( updatedModel, genRandomBytes ())
+                        _ ->
+                            ( updatedModel, genRandomBytes () )
 
-                    (_ , Nothing) ->
-                        ( { model | url = url, currentPlaylist = noPlaylist }, Cmd.none)
+                ( _, Nothing ) ->
+                    ( { model | url = url, currentPlaylist = noPlaylist }, Cmd.none )
 
-                    (_, f) ->
-                        let 
-                            selectedPlaylist = Maybe.withDefault noPlaylist (List.head 
-                                (List.filter (\x -> x.id == (Maybe.withDefault "" f)) model.playlists))
-                            
-                            cmdLoadSongs = 
-                                case selectedPlaylist.songs of
-                                    [] ->
-                                        Cmd.batch
-                                            [ getTracks selectedPlaylist model.authToken
-                                            , getTrackFeaturesForPlaylist selectedPlaylist model.authToken
-                                            ]
-                                    _ ->
-                                        Cmd.none
-                        in
-                            ( { model | url = url, currentPlaylist = selectedPlaylist }, cmdLoadSongs )
-            
-            
-        
+                ( _, f ) ->
+                    let
+                        selectedPlaylist =
+                            Maybe.withDefault noPlaylist
+                                (List.head
+                                    (List.filter (\x -> x.id == Maybe.withDefault "" f) model.playlists)
+                                )
+
+                        cmdLoadSongs =
+                            case selectedPlaylist.songs of
+                                [] ->
+                                    Cmd.batch
+                                        [ getTracks selectedPlaylist model.authToken
+                                        , getTrackFeaturesForPlaylist selectedPlaylist model.authToken
+                                        ]
+
+                                _ ->
+                                    Cmd.none
+                    in
+                    ( { model | url = url, currentPlaylist = selectedPlaylist }, cmdLoadSongs )
+
         GotRandomBytes randomList ->
             case getCodeVerifier randomList of
                 Nothing ->
@@ -323,63 +350,16 @@ update msg model =
                     , get url (Http.expectJson GotPlaylists playlistsDecoder) model.authToken
                     )
 
-        ClickedShuffle p ->
-            case p.songs of
-                [] ->
-                    ( { model | currentPlaylist = p },
-                    Cmd.batch
-                    [ getTracks p model.authToken
-                    , getTrackFeaturesForPlaylist p model.authToken
-                    ])
-
-                _ ->
-                    ( { model | currentPlaylist = p } , Cmd.none )
-
-        ClickedReloadLibrary ->
-            -- let newModel = { model | playlists = List.map (\x -> if x.id == model.currentPlaylist.id then { x | songs = [] } else x) model.playlists }
-            -- in
-            -- ( newModel, Cmd.batch
-            --     [ get (getUrlFromPath "/me/playlists") (Http.expectJson GotPlaylists playlistsDecoder) model.authToken
-            --     --, getTracks model.currentPlaylist model.authToken
-            --     --, getTrackFeaturesForPlaylist model.currentPlaylist model.authToken
-            --     ]
-            -- )
-            ( { model | playlists = [] }, Cmd.batch 
-                [ setStorage (storageEncoder [])
-                , get (getUrlFromPath "/me/playlists") (Http.expectJson GotPlaylists playlistsDecoder) model.authToken] )
-
-        ClickedResetCurrentPlaylist ->
-            let 
-                selectedPlaylist = Maybe.withDefault (Playlist [] "none" "" 0 "" "") (List.head 
-                    (List.filter (\x -> x.id == model.currentPlaylist.id) model.playlists))
-            in
-            ( {model | currentPlaylist = selectedPlaylist}, Cmd.none )
-        
-        ClickedSortByDancability ->
-            let
-                old_playlist = model.currentPlaylist
-                new_playlist = { old_playlist | songs = List.sortBy .danceability old_playlist.songs }
-                sortedSongs =
-                    List.sortBy .name old_playlist.songs
-                        |> List.reverse  -- Remove this line if you want ascending order
-            in
-                ( { model | currentPlaylist = new_playlist } , Cmd.none )
-        
-        ClickedFilterByTempo min max ->
-            let
-                old_playlist = model.currentPlaylist
-                new_playlist = { old_playlist | songs = List.filter (\song -> song.tempo >= min && song.tempo <= max) old_playlist.songs }
-            in
-                ( { model | currentPlaylist = new_playlist } , Cmd.none )
-
         GotSongs p (Ok ( songs, nextQuery )) ->
             let
                 newP =
                     { p | songs = p.songs ++ songs }
 
                 m =
-                    { model | playlists = newP :: List.filter (\x -> newP.id /= x.id) model.playlists,
-                              currentPlaylist = newP}
+                    { model
+                        | playlists = newP :: List.filter (\x -> newP.id /= x.id) model.playlists
+                        , currentPlaylist = newP
+                    }
             in
             ( m
             , case nextQuery of
@@ -396,30 +376,153 @@ update msg model =
         GotTrackFeatures (Ok f) ->
             let
                 newP =
-                    case (List.head model.playlists) of
+                    case List.head model.playlists of
                         Nothing ->
                             Playlist [] "No playlist selected" "" 0 "" ""
 
                         Just p ->
-                            { p | songs = List.map (\song ->
-                                if song.id == f.id 
-                                    then { song | 
-                                          danceability = f.danceability
-                                        , energy = f.energy
-                                        , key = f.key
-                                        , tempo = f.tempo}
-                                    else song) 
-                             p.songs
+                            { p
+                                | songs =
+                                    List.map
+                                        (\song ->
+                                            if song.id == f.id then
+                                                { song
+                                                    | danceability = f.danceability
+                                                    , energy = f.energy
+                                                    , key = f.key
+                                                    , tempo = f.tempo
+                                                }
+
+                                            else
+                                                song
+                                        )
+                                        p.songs
                             }
-        
+
                 m =
-                    { model | playlists = newP :: List.filter (\x -> newP.id /= x.id) model.playlists,
-                              currentPlaylist = newP }
+                    { model
+                        | playlists = newP :: List.filter (\x -> newP.id /= x.id) model.playlists
+                        , currentPlaylist = newP
+                    }
             in
-            (m, setStorage (storageEncoder m.playlists))
-            
+            ( m, setStorage (storageEncoder m.playlists) )
+
+        ClickedReloadLibrary ->
+            ( { model | playlists = [] }
+            , Cmd.batch
+                [ setStorage (storageEncoder [])
+                , get (getUrlFromPath "/me/playlists") (Http.expectJson GotPlaylists playlistsDecoder) model.authToken
+                ]
+            )
+
+        ClickedResetCurrentPlaylist ->
+            let
+                selectedPlaylist =
+                    Maybe.withDefault (Playlist [] "none" "" 0 "" "")
+                        (List.head
+                            (List.filter (\x -> x.id == model.currentPlaylist.id) model.playlists)
+                        )
+            in
+            ( { model | currentPlaylist = selectedPlaylist }, Cmd.none )
+
+        ClickedReverseOrder ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p | songs = List.reverse p.songs }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
+        ClickedSortByTempo ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p | songs = List.sortBy .tempo p.songs }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
+        ClickedSortByKey ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p | songs = List.sortBy .key p.songs }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
+        ClickedSortByEnergy ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p | songs = List.sortBy .energy p.songs }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
+        ClickedSortByDancability ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p | songs = List.sortBy .danceability p.songs }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
+        TempoMin value ->
+            ( { model | tempoMin = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        TempoMax value ->
+            ( { model | tempoMax = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        EnergyMin value ->
+            ( { model | energyMin = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        EnergyMax value ->
+            ( { model | energyMax = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        DanceabilityMin value ->
+            ( { model | danceabilityMin = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        DanceabilityMax value ->
+            ( { model | danceabilityMax = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none )
+
+        ApplyFilter ->
+            let
+                p =
+                    model.currentPlaylist
+
+                newP =
+                    { p
+                        | songs =
+                            List.filter
+                                (\song ->
+                                    song.tempo
+                                        >= model.tempoMin
+                                        && song.tempo
+                                        <= model.tempoMax
+                                        && song.energy
+                                        >= model.energyMin
+                                        && song.energy
+                                        <= model.energyMax
+                                        && song.danceability
+                                        >= model.danceabilityMin
+                                        && song.danceability
+                                        <= model.danceabilityMax
+                                )
+                                p.songs
+                    }
+            in
+            ( { model | currentPlaylist = newP }, Cmd.none )
+
         OnChartHover hovering ->
-            ( { model | chartHovering = hovering }, Cmd.none )    
+            ( { model | chartHovering = hovering }, Cmd.none )
 
         AddedToQueue count songs ->
             case songs of
@@ -442,36 +545,19 @@ update msg model =
             ( model, Cmd.none )
 
         _ ->
-        --    ( { model | errorState = Just msg }, Cmd.none )
-            ( model, Cmd.none )
+            ( { model | errorState = Just msg }, Cmd.none )
 
 
-enqueuePlaylist : Playlist -> Cmd Msg
-enqueuePlaylist p =
-    Cmd.none
-    --Random.generate (AddedToQueue 0) (Random.List.shuffle p.songs)
 
-sortCurrentPlaylistByDancability : Model -> ( Model, Cmd Msg)
-sortCurrentPlaylistByDancability model =
-     let
-        old_playlist = model.currentPlaylist
-        new_playlist = { old_playlist | songs = List.sortBy .danceability old_playlist.songs }
-
-    in
-    ( { model | currentPlaylist = new_playlist } , Cmd.none )
+-- MARK: HTTP
 
 
 getTracks : Playlist -> String -> Cmd Msg
 getTracks p token =
     get (getUrlFromPath <| "/playlists/" ++ p.id ++ "/tracks") (Http.expectJson (GotSongs p) songsDecoder) token
 
--- clearSongsOfPlaylist : Playlist -> Model -> Model Cmd Msg
--- clearSongsOfPlaylist p m =
---     let newModel = { m | playlists = List.map (\x -> if x.id == p.id then { x | songs = [] } else x) m.playlists }
---     in
---     ( newModel, setStorage (storageEncoder newModel.playlists))
 
-getTrackFeatures : (Maybe Song) -> String -> Cmd Msg
+getTrackFeatures : Maybe Song -> String -> Cmd Msg
 getTrackFeatures song token =
     case song of
         Nothing ->
@@ -479,6 +565,7 @@ getTrackFeatures song token =
 
         Just s ->
             get (getUrlFromPath <| "/audio-features/" ++ s.id) (Http.expectJson GotTrackFeatures trackFeaturesDecoder) token
+
 
 getTrackFeaturesForPlaylist : Playlist -> String -> Cmd Msg
 getTrackFeaturesForPlaylist p token =
@@ -489,6 +576,7 @@ getTrackFeaturesForPlaylist p token =
         _ ->
             List.map (\song -> getTrackFeatures (Just song) token) p.songs
                 |> Cmd.batch
+
 
 keepUnchanged : List Playlist -> List Playlist -> List Playlist
 keepUnchanged old new =
@@ -518,8 +606,6 @@ getUser =
 
 
 
-
-
 -- MARK: VIEW
 
 
@@ -530,87 +616,101 @@ view model =
         [ viewNavbar model
         , case model.currentPlaylist.id of
             "" ->
-                div [ class "pt-6 mt-5 ml-6 mr-6" ] 
-                    [ viewLibrary model
-                    --, viewDebug model
-                    ]
-            _ ->
                 div [ class "pt-6 mt-5 ml-6 mr-6" ]
-                    [ viewAnalysis model
+                    [ viewLibrary model
+
                     --, viewDebug model
                     ]
 
+            _ ->
+                div [ class "pt-6 mt-5 ml-6 mr-6" ]
+                    [ viewAnalysis model
+
+                    --, viewDebug model
+                    ]
         ]
     }
+
+
 viewNavbar : Model -> Html Msg
-viewNavbar model 
-    = nav [ attribute "aria-label" "main navigation", class "navbar is-fixed-top pl-6 pr-6", attribute "role" "navigation" ]
+viewNavbar model =
+    nav [ attribute "aria-label" "main navigation", class "navbar is-fixed-top pl-6 pr-6", attribute "role" "navigation" ]
         [ div [ class "navbar-brand" ]
-            [ a [ class "navbar-item", href "" ]
-            [ text "DJ Discover" ]
+            [ a [ class "navbar-item", href (Url.toString homeUrl) ]
+                [ text "DJ Discover" ]
             ]
         , div [ class "navbar-menu" ]
             [ div [ class "navbar-start" ]
-            [ a [ class "navbar-item", href "" ]
-                [ text "Playlists" ]
-            , a [ class "navbar-item" ]
-                [ text "Reset" ]
-            ]
+                [ a [ class "navbar-item", href (Url.toString homeUrl) ]
+                    [ text "Library" ]
+                ]
             , div [ class "navbar-end" ] [ viewNavbarUser model ]
             ]
         ]
 
-viewNavbarUser: Model -> Html Msg
+
+viewNavbarUser : Model -> Html Msg
 viewNavbarUser model =
     case isAuthenticated model of
         True ->
-            a [ class "navbar-item", href "/"]
-                [ span [ class "mr-2" ] [ figure [ class "image is-24x24" ]
-                [ img [ class "is-rounded", src model.picture ] [] ]]
-                , span [] [text model.username]
+            a [ class "navbar-item", href "" ]
+                [ span [ class "mr-2" ]
+                    [ figure [ class "image is-24x24" ]
+                        [ img [ class "is-rounded", src model.picture ] [] ]
+                    ]
+                , span [] [ text model.username ]
                 ]
 
         False ->
             a [ class "navbar-item", href "/login" ]
                 [ span [ class "icon mr-1" ] [ i [ class "fa-solid fa-right-to-bracket" ] [] ]
-                , span [] [text "Authenticate"]
+                , span [] [ text "Authenticate" ]
                 ]
 
-        
 
 viewAnalysis : Model -> Html Msg
 viewAnalysis m =
-    let 
-        p = m.currentPlaylist
+    let
+        p =
+            m.currentPlaylist
+
         viewAnalysisBody =
             case p.songs of
                 [] ->
                     div [ class "box is-three-quarters-desktop is-info" ]
                         [ h1 [ class "title is-6" ] [ text "No song data available" ]
                         , h2 [ class "subtitle is-6" ] [ text "No song data was found in local storage. Authenticate with your Spotify account to load the info from Spotify." ]
+                        , div [ class "mb-6" ] []
+                        , a [ class "button is-primary", href (homePath ++ "#" ++ p.id) ] [ text "Reload" ]
                         ]
 
                 _ ->
                     div [ class "container is-three-quarters-desktop" ]
                         [ viewAnalysisTable p
                         , div [ class "mb-6" ] []
+                        , viewAnalysisFilter m
                         , viewAnalysisChart m
                         ]
     in
-    div [ class "container is-three-quarters-desktop"]
-        [ div [ class "media" ]
-            [ div [ class "media-left" ]
-                [ figure [ class "image is-128x128" ]
-                    [ img [ src p.imageUrl ] [] ]
+    div [ class "container is-three-quarters-desktop" ]
+        [ div [ class "columns" ]
+            [ div [ class "media column" ]
+                [ div [ class "media-left" ]
+                    [ figure [ class "image is-128x128" ]
+                        [ img [ src p.imageUrl ] [] ]
+                    ]
+                , div [ class "media-content" ]
+                    [ h1 [ class "title" ] [ text p.name ]
+                    , viewPlaylistIsLocal (not (isAuthenticated m))
+                    , h2 [ class "subtitle is-6" ] [ text (String.fromInt p.length ++ " songs") ]
+                    ]
                 ]
-            , div [ class "media-content" ]
-                [ h1 [ class "title" ] [ text p.name]
-                , viewLibraryIsLocal (not (isAuthenticated m))
-                , h2 [ class "subtitle is-6" ] [ text (String.fromInt p.length ++ " songs") ]
-                ]
+            , div [ class "column is-align-content-baseline has-text-right" ]
+                [ button [ class "button is-primary", onClick (AddedToQueue 0 p.songs) ] [ text "Add to Queue" ] ]
             ]
         , viewAnalysisBody
         ]
+
 
 viewAnalysisTable : Playlist -> Html Msg
 viewAnalysisTable p =
@@ -618,77 +718,111 @@ viewAnalysisTable p =
         [ table [ class "table is-fullwidth is-hoverable" ]
             [ thead []
                 [ tr []
-                    [ th [ style "padding-right" "5px"] [ ]
-                    , th [ style "padding-left" "5px" ] [ text "BPM" ]
-                    , th [] [ text "Key" ]
-                    , th [] [ text "Energy" ]
-                    , th [] [ text "Danceability" ]
+                    [ th [ class "has-text-right is-align-content-center" ]
+                        [ span [ class "icon has-text-primary mr-2", onClick ClickedResetCurrentPlaylist ] [ i [ class "fa-solid fa-rotate-left" ] [] ]
+                        , span [ class "icon has-text-primary", onClick ClickedReverseOrder ] [ i [ class "fa-solid fa-sort" ] [] ]
+                        ]
+                    , th [] [ button [ class "button is-ghost is-fullwidth has-text-primary", onClick ClickedSortByTempo ] [ text "BPM" ] ]
+                    , th [] [ button [ class "button is-ghost is-fullwidth has-text-primary", onClick ClickedSortByKey ] [ text "Key" ] ]
+                    , th [] [ button [ class "button is-ghost is-fullwidth has-text-primary", onClick ClickedSortByEnergy ] [ text "Energy" ] ]
+                    , th [] [ button [ class "button is-ghost is-fullwidth has-text-primary", onClick ClickedSortByDancability ] [ text "Dance%" ] ]
                     ]
                 ]
             , tbody [] (List.map viewAnalysisTableElement p.songs)
             ]
         ]
 
+
 viewAnalysisTableElement : Song -> Html Msg
 viewAnalysisTableElement s =
     tr []
-        [ td [] 
+        [ td []
             [ div [ class "media" ]
                 [ div [ class "media-left" ]
                     [ figure [ class "image is-48x48" ]
                         [ img [ src s.imageUrl ] [] ]
                     ]
                 , div [ class "media-content" ]
-                    [ p [ style "font-weight" "bold" ] [ text (stringEllipsis s.name 40)]
+                    [ p [ style "font-weight" "bold" ] [ text (stringEllipsis s.name 40) ]
                     , p [ class "is-size-7" ] [ text (stringEllipsis (String.join ", " s.artists) 50) ]
                     ]
                 ]
             ]
-        , td [] [ text (featureTempoToString s.tempo) ]
-        , td [] [ text (featureKeyToString s.key)]
-        , td [] [ text (featureConfidenceToString s.energy)]
-        , td [] [ text (featureConfidenceToString s.danceability)]
+        , td [ class "has-text-centered" ] [ text (featureTempoToString s.tempo) ]
+        , td [ class "has-text-centered" ] [ text (featureKeyToString s.key) ]
+        , td [ class "has-text-centered" ] [ text (featureConfidenceToString s.energy) ]
+        , td [ class "has-text-centered" ] [ text (featureConfidenceToString s.danceability) ]
         ]
+
+
+viewAnalysisFilter : Model -> Html Msg
+viewAnalysisFilter m =
+    div [ class "box is-three-quarters-desktop" ]
+        [ h1 [ class "title is-6" ] [ text "Filter" ]
+        , h2 [ class "subtitle is-6" ] [ text "Filter the songs in the playlist by tempo, energy and danceability." ]
+        , div [ class "columns" ]
+            [ div [ class "column" ]
+                [ h3 [ class "title is-6" ] [ text "BPM" ]
+                , input [ class "input", type_ "text", placeholder "0", onInput TempoMin ] []
+                , input [ class "input", type_ "text", placeholder "300", onInput TempoMax ] []
+                ]
+            , div [ class "column" ]
+                [ h3 [ class "title is-6" ] [ text "Energy" ]
+                , input [ class "input", type_ "text", placeholder "0", onInput EnergyMin ] []
+                , input [ class "input", type_ "text", placeholder "100", onInput EnergyMax ] []
+                ]
+            , div [ class "column" ]
+                [ h3 [ class "title is-6" ] [ text "Danceability" ]
+                , input [ class "input", type_ "text", placeholder "0", onInput DanceabilityMin ] []
+                , input [ class "input", type_ "text", placeholder "100", onInput DanceabilityMax ] []
+                ]
+            ]
+        , button [ class "button is-primary", onClick ApplyFilter ] [ text "Apply" ]
+        ]
+
 
 viewAnalysisChart : Model -> Html Msg
 viewAnalysisChart m =
-    div [ class "box is-three-quarters-desktop" ]
+    div [ class "box is-three-quarters-desktop p-5" ]
         [ h1 [ class "title is-6" ] [ text "Playlist Flow" ]
         , h2 [ class "subtitle is-6" ] [ text "The following chart shows the tempo, energy and danceability of the songs in the playlist." ]
         , viewAnalysisChartSvg m
         ]
+
+
 viewAnalysisChartSvg : Model -> Svg.Svg Msg
 viewAnalysisChartSvg m =
     let
         data =
-            List.indexedMap (\index song -> { index= (toFloat index), name = song.name, tempo=(song.tempo + 100), energy=(song.energy * 100), danceability=(song.danceability * 100 + 75)}) m.currentPlaylist.songs
-            --List.indexedMap (\index song -> {index=index, song=song}) currentPlaylist.songs
+            List.indexedMap (\index song -> { index = toFloat index, name = song.name, tempo = song.tempo + 100, energy = song.energy * 100, danceability = song.danceability * 100 + 75 }) m.currentPlaylist.songs
     in
     C.chart
         [ CA.height 300
         , CA.width 1000
-        , CE.onMouseMove OnChartHover (CE.getNearest CI.stacks)
-        , CE.onMouseLeave (OnChartHover [])
+
+        --, CE.onMouseMove OnChartHover (CE.getNearest CI.stacks)
+        --, CE.onMouseLeave (OnChartHover [])
         ]
         [ C.series .index
-                [ C.interpolated .tempo
-                    [ CA.monotone ]
-                    []
-                    --[ CA.circle, CA.color "white", CA.borderWidth 1 ]
-                    |> C.named "Tempo"
-                , C.interpolated .danceability
-                    [ CA.monotone ]
-                    []
-                    --[ CA.circle, C ]
-                    |> C.named "Danceability"
-                , C.interpolated .energy
-                    [ CA.monotone ]
-                    []
-                    --[ CA.circle, CA.color "white", CA.borderWidth 1 ]
-                    |> C.named "Energy"
-                ]
+            [ C.interpolated .tempo
+                [ CA.monotone ]
+                []
+                --[ CA.circle, CA.color "white", CA.borderWidth 1 ]
+                |> C.named "Tempo"
+            , C.interpolated .danceability
+                [ CA.monotone ]
+                []
+                --[ CA.circle, C ]
+                |> C.named "Danceability"
+            , C.interpolated .energy
+                [ CA.monotone ]
+                []
+                --[ CA.circle, CA.color "white", CA.borderWidth 1 ]
+                |> C.named "Energy"
+            ]
             data
-        , C.legendsAt .min .max
+        , C.legendsAt .min
+            .max
             [ CA.column
             , CA.moveRight 15
             , CA.spacing 5
@@ -699,35 +833,57 @@ viewAnalysisChartSvg m =
         --    [ C.tooltip item [] [] [] ]
         ]
 
+
+viewPlaylistIsLocal : Bool -> Html Msg
+viewPlaylistIsLocal isLocal =
+    if isLocal then
+        div [ class "icon-text has-text-info" ]
+            [ span [ class "icon" ]
+                [ i [ class "fa-regular fa-floppy-disk" ] [] ]
+            , text "Local Data only"
+            ]
+
+    else
+        div [ class "icon-text has-text-success" ]
+            [ span [ class "icon" ]
+                [ i [ class "fa-brands fa-spotify" ] [] ]
+            , text "Spotify + Local Data"
+            ]
+
+
 viewLibrary : Model -> Html Msg
 viewLibrary model =
     case model.playlists of
         [] ->
-            div [ class "box is-three-quarters-desktop" ]
-                [ h1 [ class "title is-1" ] [ text "Welcome to DJ Discover (beta)" ]
-                , h2 [ class "subtitle is-6" ] [ text "With DJ Discover you can quickly access key metrics for your DJ set, such as BPM, Key and Dancability." ]
+            div [ class "box is-three-quarters-desktop p-6" ]
+                [ h1 [ class "title is-1" ] [ text "Welcome to DJ Discover 💿" ]
+                , div [ class "mb-6" ] []
+                , h2 [ class "subtitle is-6" ] [ text "With DJ Discover you can quickly view 🔍, sort 🧮 and filter 🤏 your Spotify playlists and directly push your selected songs to your Spotify queue." ]
                 , h2 [ class "subtitle is-6" ] [ text "To get started, authenticate with your Spotify account (top right) and select a playlist." ]
                 , div [ class "mb-6" ] []
-                , p [class "is-warning"] [ text "Due to Spotifys API restrictions I have to manually whitelist your account for access to this app. Please contact me at app@patjen.de to get whitelisted or use the demo data provided in the GitHub repo." ]
-                , div [class "mb-6" ] []
+                , p [ class "has-text-warning" ] [ text "⚠️ Due to Spotifys API restrictions, I have to manually whitelist your account to gain access to this app." ]
+                , p [ class "has-text-warning" ] [ text "Please contact me at ", a [ href "mailto:app@patjen.de" ] [ text "app@patjen.de" ], text " to get access." ]
+                , div [ class "mb-6" ] []
                 , p [] [ text "DJ Discover is a project by Patrick Jende, built with Elm and Spotify's Web API." ]
+                , a [ href "https://github.com/patjen/dj-discover" ] [ text "Source Code on GitHub" ]
                 ]
+
         _ ->
             div [ class "container is-three-quarters-desktop" ]
                 [ div [ class "container is-flex is-justify-content-space-between", style "align-items" "center" ]
                     [ h1 [ class "title" ] [ text "Your Playlist Library" ]
                     , viewLibraryIsLocal (not (isAuthenticated model))
                     ]
-                , div [ class "grid is-col-min-9 "]
+                , div [ class "grid is-col-min-9 " ]
                     (List.map viewLibraryPlaylist model.playlists)
                 ]
-    
+
 
 viewLibraryPlaylist : Playlist -> Html Msg
 viewLibraryPlaylist p =
-    div [ class "cell"]
-     [ a [ href ("/#" ++ p.id)]
-            [ div [ class "card"]
+    div [ class "cell" ]
+        [ a [ href ("/dj-discover/#" ++ p.id) ]
+            [ div [ class "card" ]
                 [ div [ class "card-image" ]
                     [ figure [ class "image is-1by1" ]
                         [ img [ src p.imageUrl ] []
@@ -737,7 +893,7 @@ viewLibraryPlaylist p =
                     [ div [ class "media" ]
                         [ div [ class "media-content" ]
                             -- TODO: Richtiges Ellipsenbilden basierend auf card größe
-                            [ div [ class "title is-6 is-ellipsis" ] [ text (stringEllipsis p.name 22)]
+                            [ div [ class "title is-6 is-ellipsis" ] [ text (stringEllipsis p.name 22) ]
                             , div [ class "subtitle is-size-7" ] [ text (String.fromInt p.length ++ " songs") ]
                             ]
                         ]
@@ -746,27 +902,30 @@ viewLibraryPlaylist p =
             ]
         ]
 
+
 viewLibraryIsLocal : Bool -> Html Msg
 viewLibraryIsLocal isLocal =
     if isLocal then
         div [ class "icon-text has-text-info" ]
-                [ span [ class "icon" ]
-                    [ i [ class "fa-regular fa-floppy-disk" ] [] ]
-                , text "Local Data only"
-                ]
+            [ span [ class "icon" ]
+                [ i [ class "fa-regular fa-floppy-disk" ] [] ]
+            , text "Local Data only"
+            ]
+
     else
         div [ class "icon-text has-text-success" ]
-                [ span [ class "icon" ]
-                    [ i [ class "fa-brands fa-spotify" ] [] ]
-                , text "Spotify + Local Data"
-                ]
+            [ span [ class "icon" ]
+                [ i [ class "fa-brands fa-spotify" ] [] ]
+            , text "Spotify + Local Data"
+            , span [ class "icon", onClick ClickedReloadLibrary ]
+                [ i [ class "fa-solid fa-rotate-left" ] [] ]
+            ]
 
 
-viewDebug: Model -> Html Msg
+viewDebug : Model -> Html Msg
 viewDebug model =
     div []
-      [
-        text "The current URL is: "
+        [ text "The current URL is: "
         , b [] [ text (Url.toString model.url) ]
         , br [] []
         , text "The current playlist is: "
@@ -782,14 +941,12 @@ viewDebug model =
             , button [ onClick ClickedSortByEnergy ] [ text "Sort by Energy" ]
             ]
         ]
-    
+
 
 viewDebugLink : String -> Html msg
 viewDebugLink path =
-  li [] [ a [ href path ] [ text path ] ]
+    li [] [ a [ href path ] [ text path ] ]
 
-
--- MARK: SVG
 
 
 -- ENCODERS/DECODERS
@@ -808,11 +965,11 @@ songsDecoder =
                             (Decode.field "id" Decode.string)
                             (Decode.at [ "artists" ] (Decode.list (Decode.field "name" Decode.string)))
                             (Decode.at [ "album", "images" ] (Decode.index 0 (Decode.field "url" Decode.string)))
-                            (Decode.succeed (0.0))
-                            (Decode.succeed (0.0))
-                            (Decode.succeed (0))
-                            (Decode.succeed (0.0))
-                            --(Decode.succeed (getTrackFeatures (Decode.field "id" Decode.string) ))
+                            (Decode.succeed 0.0)
+                            (Decode.succeed 0.0)
+                            (Decode.succeed 0)
+                            (Decode.succeed 0.0)
+                     --(Decode.succeed (getTrackFeatures (Decode.field "id" Decode.string) ))
                     )
                 )
 
@@ -834,13 +991,20 @@ playlistsDecoder =
                         (Decode.field "id" Decode.string)
                         (Decode.at [ "tracks" ] (Decode.field "total" Decode.int))
                         (Decode.field "snapshot_id" Decode.string)
-                        (Decode.field "images" (Decode.index 0 (Decode.field "url" Decode.string)))
+                        (Decode.field "images"
+                            (Decode.oneOf
+                                [ Decode.null ""
+                                , Decode.index 0 (Decode.field "url" Decode.string)
+                                ]
+                            )
+                        )
                 )
 
         nextUrl =
             Decode.field "next" (Decode.nullable Decode.string)
     in
     Decode.map2 (\x y -> ( x, y )) playlists nextUrl
+
 
 trackFeaturesDecoder : Decode.Decoder TrackFeatures
 trackFeaturesDecoder =
@@ -851,6 +1015,7 @@ trackFeaturesDecoder =
         (Decode.field "energy" Decode.float)
         (Decode.field "key" Decode.int)
         (Decode.field "tempo" Decode.float)
+
 
 storageDecoder : Decode.Decoder (List Playlist)
 storageDecoder =
@@ -868,7 +1033,7 @@ storageDecoder =
                         (Decode.field "danceability" Decode.float)
                         (Decode.field "energy" Decode.float)
                         (Decode.field "key" Decode.int)
-                        (Decode.field "tempo" Decode.float)        
+                        (Decode.field "tempo" Decode.float)
             )
             (Decode.field "name" Decode.string)
             (Decode.field "id" Decode.string)
@@ -876,7 +1041,7 @@ storageDecoder =
             (Decode.field "snapshot" Decode.string)
             (Decode.field "imageUrl" Decode.string)
 
-        
+
 storageEncoder : List Playlist -> Encode.Value
 storageEncoder ps =
     let
@@ -908,52 +1073,70 @@ storageEncoder ps =
 
 -- HELPERS
 
+
 isAuthenticated : Model -> Bool
 isAuthenticated model =
     model.authToken /= ""
+
 
 featureKeyToString : Int -> String
 featureKeyToString key =
     case key of
         0 ->
             "C"
+
         1 ->
             "C#"
+
         2 ->
             "D"
+
         3 ->
             "D#"
+
         4 ->
             "E"
+
         5 ->
             "F"
+
         6 ->
             "F#"
+
         7 ->
             "G"
+
         8 ->
             "G#"
+
         9 ->
             "A"
+
         10 ->
             "A#"
+
         11 ->
             "B"
+
         _ ->
             "Unknown"
 
+
 featureTempoToString : Float -> String
 featureTempoToString tempo =
-    String.fromInt (round  tempo)
+    String.fromInt (round tempo)
+
 
 featureConfidenceToString : Float -> String
 featureConfidenceToString confidence =
-    String.fromInt (round (confidence*100)) ++ "%"
+    String.fromInt (round (confidence * 100)) ++ "%"
+
 
 stringEllipsis : String -> Int -> String
 stringEllipsis s n =
     if String.length s > n then
         String.left n s ++ "..."
+
     else
         s
 
