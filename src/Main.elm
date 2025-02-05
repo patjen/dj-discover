@@ -147,7 +147,7 @@ type Msg
 
 homeUrl : Url.Url
 homeUrl =
-    { defaultHttpsUrl | host = "patjen.github.io/dj-discover" }
+    { defaultHttpsUrl | host = "patjen.de/dj-discover" }
 
 
 
